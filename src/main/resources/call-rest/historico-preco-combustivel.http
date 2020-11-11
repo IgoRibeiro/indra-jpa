@@ -1,0 +1,138 @@
+### Api Listar Paginado
+GET /v1/historico-preco-combustivel?size=100&page=0 HTTP/1.1
+User-Agent: vscode-restclient
+Host: localhost:8080
+
+### Api Listar Paginado Por Sigla Regiao - Equivale ao listar todos pela Sigla da Regiao
+GET /v1/historico-preco-combustivel?size=100&page=0&siglaRegiao=CO HTTP/1.1
+User-Agent: vscode-restclient
+Host: localhost:8080
+
+### Api Media Preco Por Municipio
+GET /v1/historico-preco-combustivel/media/preco-municipio?nomeMunicipio=BRASILIA HTTP/1.1
+User-Agent: vscode-restclient
+Host: localhost:8080
+
+### Api Media Preco Compra e Venda Por Municipio
+GET /v1/historico-preco-combustivel/media/compra-venda-municipio?nomeMunicipio=BRASILIA HTTP/1.1
+User-Agent: vscode-restclient
+Host: localhost:8080
+
+### Api Media Preco Compra e Venda Por Bandeira(Distribuidora)
+GET /v1/historico-preco-combustivel/media/compra-venda-bandeira?nomeBandeira=IPIRANGA HTTP/1.1
+User-Agent: vscode-restclient
+Host: localhost:8080
+
+### Api Historicos Agrupados por Distribuidora
+GET /v1/historico-preco-combustivel/listar/agrupado-distribuidora HTTP/1.1
+User-Agent: vscode-restclient
+Host: localhost:8080
+Content-Type: application/json
+
+{
+    "nome": "IPIRANGA"
+}
+
+### Api Historicos Agrupados por Data da Coleta
+GET /v1/historico-preco-combustivel/listar/agrupado-data-coleta?dataColeta=2018-01-30 HTTP/1.1
+User-Agent: vscode-restclient
+Host: localhost:8080
+
+### Api Novo Historico
+POST /v1/historico-preco-combustivel HTTP/1.1
+User-Agent: vscode-restclient
+Host: localhost:8080
+Content-Type: application/json
+
+
+{
+  "bandeira": {
+    "id": 2,
+    "nome": "PETROBRAS DISTRIBUIDORA S.A."
+  },
+  "dataColeta": "2020-11-11T00:38:22.924Z",
+  "produto": {
+        "id": 584,
+        "nome": "ETANOL",
+        "unidadeMedida": {
+            "id": 90,
+            "nome": "R$ / litro"
+        }
+    },
+   "revenda": {
+        "id": 35352,
+        "nome": "AUTO POSTO OCEANO ATLANTICO LTDA",
+        "municipio": {
+            "id": 544,
+            "nome": "SANTOS",
+            "regiao": {
+            "id": 122,
+            "siglaRegiao": {
+                "id": 95,
+                "sigla": "SE"
+            },
+            "estado": {
+                "id": 89,
+                "sigla": "SP"
+            }
+            }
+        }
+    },
+  "valorCompra": 3.1202,
+  "valorVenda": 3.1505
+}
+
+### Api Editar - Obs.: A Alteracao esta sendo na Bandeira
+PUT /v1/historico-preco-combustivel HTTP/1.1
+User-Agent: vscode-restclient
+Host: localhost:8080
+Content-Type: application/json
+
+{
+    "id": 4575,
+    "revenda": {
+        "id": 10368,
+        "nome": "GUIMARAES BORGES COMERCIO DE DERIVADOS DE PETROLEO LTDA",
+        "municipio": {
+            "id": 138,
+            "nome": "RIO VERDE",
+            "regiao": {
+            "id": 97,
+            "siglaRegiao": {
+                "id": 91,
+                "sigla": "CO"
+            },
+            "estado": {
+                "id": 64,
+                "sigla": "GO"
+            }
+            }
+        }
+    },
+    "bandeira": {
+        "id": 4,
+        "nome": "BRANCA"
+    },
+    "produto": {
+        "id": 582,
+        "nome": "DIESEL",
+        "unidadeMedida": {
+            "id": 90,
+            "nome": "R$ / litro"
+        }
+    },
+    "dataColeta": "2018-01-02",
+    "valorCompra": 0.0000,
+    "valorVenda": 3.4590
+}
+
+
+### Api Pesquisar Por ID
+GET /v1/historico-preco-combustivel/4575 HTTP/1.1
+User-Agent: vscode-restclient
+Host: localhost:8080
+
+### Api Remover/Excluir Por ID
+DELETE /v1/historico-preco-combustivel/4575 HTTP/1.1
+User-Agent: vscode-restclient
+Host: localhost:8080

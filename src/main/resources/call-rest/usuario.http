@@ -1,0 +1,40 @@
+### Api Listar Paginado
+GET /v1/usuario?size=100&page=0 HTTP/1.1
+User-Agent: vscode-restclient
+Host: localhost:8080
+
+### Api Novo 
+POST /v1/usuario HTTP/1.1
+User-Agent: vscode-restclient
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "login": "igo",
+  "nome": "Igo Coutinho",
+  "senha": "vaiqueda"
+}
+
+### Api Editar - Obs.: ALteracao no nome - O ID vai depender do INSERT
+PUT /v1/usuario HTTP/1.1
+User-Agent: vscode-restclient
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "id": 470388,
+  "login": "igo",
+  "nome": "Igo Ribeiro",
+  "senha": "vaiqueda"
+}
+
+
+### Api Pesquisar Por ID
+GET /v1/usuario/470388 HTTP/1.1
+User-Agent: vscode-restclient
+Host: localhost:8080
+
+### Api Remover/Excluir Por ID
+DELETE /v1/usuario/470388 HTTP/1.1
+User-Agent: vscode-restclient
+Host: localhost:8080
